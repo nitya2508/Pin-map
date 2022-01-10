@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "name": "nnn",
+      "email": "qwwqw@gmail.com",
+      "password": "456789",
+      "id": "f85e48ad",
+      "registrationType": "manual"
+    },
+    {
+      "name": "nnn",
+      "email": "qwww@gmail.com",
+      "password": "456789",
+      "id": "88784da3",
+      "registrationType": "manual"
+    },
+    {
+      "name": "Nityashree",
+      "email": "nityashree2508@gmail.com",
+      "password": "123456",
+      "id": "fbe14399",
+      "registrationType": "manual"
+    },
+    {
+      "name": "Nitya C",
+      "email": "nityashree@gmail.com",
+      "password": "123123",
+      "id": "0a3e4796",
+      "registrationType": "manual"
+    },
+    {
+      "name": "Nitya ",
+      "email": "nityashree25@gmail.com",
+      "password": "123qwe",
+      "id": "5b7e4398",
+      "registrationType": "manual"
+    },
+    {
+      "name": "Nitya ",
+      "email": "nitya2508@gmail.com",
+      "password": "qwerty123",
+      "id": "fab54b8c",
+      "registrationType": "manual"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "id": "d977418d",
+      "registrationType": "manual"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+.screen{
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    padding: 3%;
+    
+}
+.title{
+    // border: 2px solid pink;
+    // color: #999999;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.outerScreen{
+    background-color: rgb(238, 235, 235);
+}
+.nameInput{
+    width: 70%;
+    height: 40px;
+    font-size: 20px;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.6;
+}
+.nameDiv{
+    // border: 2px solid red;
+    width: 100%;
+    margin:10px;
+}
+.formDiv{
+    // border: 2px solid red;
+    width: 500px;
+    margin-top: 50px;
+}
+.buttonDiv{
+    width: 100%;
+    margin-top:80px;
+    margin-bottom: 30px;
+}
+#signup{
+    width: 180px;
+    height: 40px;
+    background-color: rgb(88, 88, 233);
+    color: white;
+    border: none;
+    font-size: 20px;
+}
+#openid{
+    width: 180px;
+    height: 40px;
+    background-color: rgb(88, 88, 233);
+    color: white;
+    border: none;
+    font-size: 20px;
+}
+#Register{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(88, 88, 233);
+    color: white;
+    border: none;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    // border: 2px solid orangered;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+  
+  /* To show the lines on right 
+  and left sides of the text */
+  .divider::after,
+  .divider::before {
+    content: "";
+    border: 1px solid black;
+    flex: 1;
+  }
+  .image{
+    width: 60px;
+    height: 60px;
+}

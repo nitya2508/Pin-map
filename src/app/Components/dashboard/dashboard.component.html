@@ -1,0 +1,39 @@
+<div fxFlex="100" >
+    <div >
+        <mat-toolbar color="primary">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="header" >
+                
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <img class="image" src="../../../../assets/location_on_white_24dp.svg">
+                    <p class="title">Pin-Map</p>
+                </div>
+    
+    
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                    <mat-icon (click)="logout()">logout</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+    </div>
+
+   <div fxLayout="row">
+    <div  fxLayout="column" fxLayoutAlign="start center"  class="sidnav">
+        <h1>Pinned Dashboard</h1>
+
+    </div>
+
+    <div fxFlex="90" class="maindiv" >
+       
+        <div class="toggle" fxLayout="row" fxLayoutAlign="end start" >
+            <span>Map</span>
+            <mat-slide-toggle class="togbutton" (change)="onChange($event)"></mat-slide-toggle> 
+            <span>Table</span>
+        </div>
+
+        <div class="bodyDiv">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+   </div>
+</div>

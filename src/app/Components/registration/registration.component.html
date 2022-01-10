@@ -1,0 +1,41 @@
+<div fxFlexFill fxLayoutAlign="center center" class="outerScreen">
+    <div fxFlex="40" class="screen">
+
+        <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-around center" >
+            <div fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: 50px;">
+                <img class="image" src="../../../../assets/pin.png"> 
+                <p class="title">Pin-Map</p>
+            </div>
+            
+
+            <form #regForm="ngForm">
+            <div fxLayout="column" fxLayoutAlign="space-around center" class="formDiv">
+
+                <div  fxLayout="row" fxLayoutAlign="space-between center" class="nameDiv">
+                    <label>Name</label>
+                    <input class="nameInput" type="text" name="name" placeholder="Enter your name.." ngModel>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="nameDiv">
+                    <label>Email</label>
+                    <input class="nameInput" type="text" name="email" placeholder="Enter your email id.." ngModel>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="nameDiv">
+                    <label>Password</label>
+                    <input class="nameInput" type="text" name="password" placeholder="Enter your password.." ngModel>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-around center" class="buttonDiv">
+                    <button id="signup" (click)="regUser(regForm.value)">SignUp</button>
+                    <button id="openid" (click)="openId()">OpenID connect</button>
+                </div>
+
+            </div>
+        </form>
+
+
+        </div>
+
+    </div>
+</div>

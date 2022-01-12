@@ -1,4 +1,7 @@
-
+.screen{
+    // border: 2px solid green;
+    height: 100vh;
+}
 .image{
     width: 50px;
     height: 50px;
@@ -19,7 +22,7 @@
     margin-left: 8%;
 }
 .sidnav{
-    height: 915px;
+    height: 716px;
     width: 400px;
     border: 1px solid rgb(170, 169, 169);
 }
@@ -41,6 +44,6 @@ span{
     font-size: 18px;
 }
 .bodyDiv{
-    // border: 2px solid purple;
-    min-height: 93%;
+    //  border: 2px solid purple;
+    height: 655px;
 }

@@ -22,6 +22,8 @@ import { OktaComponent } from './Components/okta/okta.component';
 import { MapComponent } from './Components/map/map.component';
 import { TableComponent } from './Components/table/table.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { DialogComponent } from './Components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 // import * as mapboxgl from 'mapbox-gl';
 
 const oktaConfig = Object.assign({
@@ -39,13 +41,14 @@ const oktaConfig = Object.assign({
     DashboardComponent,
     OktaComponent,
     MapComponent,
-    TableComponent
+    TableComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,ReactiveFormsModule,HttpClientModule,MatSnackBarModule,MatToolbarModule,
     BrowserAnimationsModule,FlexLayoutModule,MatDividerModule,MatIconModule,OktaAuthModule,
-    MatSlideToggleModule, LeafletModule
+    MatSlideToggleModule, LeafletModule, MatDialogModule
   
   ],
   providers: [

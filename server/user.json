@@ -48,6 +48,20 @@
       "password": "",
       "id": "d977418d",
       "registrationType": "manual"
+    },
+    {
+      "name": "Nityashree C",
+      "email": "nityashree.c@bridgelabz.com",
+      "password": "",
+      "id": "bb30498d",
+      "registrationType": "okta"
+    },
+    {
+      "name": "Nitya Shree",
+      "email": "nityashree2508@gmail.com",
+      "password": "",
+      "id": "4a304389",
+      "registrationType": "okta"
     }
   ]
 }

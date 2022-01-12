@@ -46,7 +46,16 @@ export class RegistrationComponent implements OnInit {
     }
     else{
       
-       
+        var dt = new Date().getTime();
+        var uuid = 'xyxx4xyx'.replace(/[xy]/g, function(c) {
+            var r = (dt + Math.random()*16)%16 | 0;
+            dt = Math.floor(dt/16);        
+            return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+        });
+        let id = uuid;
+        console.log(id)
+        regObj.id = uuid;
+        regObj.registrationType = "manual";
       this.userservice.addUser(regObj).subscribe((response)=>{
           console.log("user added",response)
 

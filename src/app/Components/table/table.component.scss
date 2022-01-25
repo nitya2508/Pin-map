@@ -1,0 +1,25 @@
+.screen{
+    // border: 2px solid green;
+    height:800px;
+     overflow:auto;
+      background:#fff;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+  button{
+      border: none;
+      background-color: transparent;
+      margin-left: 3px;
+      margin-right: 3px;
+      text-decoration: underline;
+      color: blue;
+  }

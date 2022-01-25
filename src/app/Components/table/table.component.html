@@ -1,2 +1,23 @@
-<p>table works!</p>
-<button (click)="create_UUID()">id</button>
+<div fxFlex=100 fxLayoutAlign="center start" class="screen" >
+    <table>
+        <tr>
+          <th>Sl no.</th>
+          <th>Place</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Address</th>
+          <th>Action</th> 
+        </tr>
+        <tr *ngFor="let location of locationList; let indexOfelement=index;">
+          
+          <td>{{indexOfelement + 1}}</td>
+          <td>{{location.title}}</td>
+          <td>{{location.latitude}}</td>
+          <td>{{location.longitude}}</td>
+          <td>{{location.address}}</td>
+          <td><button (click)="viewLocation(location, indexOfelement)">View</button><button (click)="viewLocation(location, indexOfelement)">Edit</button><button>Delete</button></td>          
+        </tr>
+       
+      </table>
+
+</div>

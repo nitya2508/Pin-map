@@ -1,5 +1,5 @@
 <div fxFlexFill fxLayoutAlign="center center" class="outerScreen">
-    <div  fxFlex="30" fxFlex.lg="40" fxFlex.md="60" class="screen">
+    <div  fxFlex="30" fxFlex.lg="40" fxFlex.md="60" fxFlex.sm="80" fxFlex.xs="100" class="screen">
 
         <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-around center">
             <div fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: 30px;">
@@ -10,17 +10,17 @@
             <form [formGroup]="signInForm" >
                 <div fxLayout="column" fxLayoutAlign="space-around center" class="formDiv">
 
-                    <div fxLayout="row" fxLayoutAlign="space-between center" class="nameDiv">
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="nameDiv">
                         <p>Email</p>
                         <input class="nameInput" type="text" placeholder="Enter your email id.." formControlName="email"/>
                     </div>
 
-                    <div fxLayout="row" fxLayoutAlign="space-between center" class="nameDiv">
+                    <div fxLayout="row"fxLayout.xs="column" fxLayoutAlign="space-between center" class="nameDiv">
                         <p>Password</p>
                         <input class="nameInput" type="text" placeholder="Enter your password.." formControlName="password"/>
                     </div>
 
-                    <div fxLayout="row" fxLayoutAlign="space-around center" class="buttonDiv">
+                    <div fxLayout="row"fxLayout.xs="column" fxLayoutAlign="space-around center" class="buttonDiv">
                         <button id="signup" (click)="onSubmit()">Sign In</button>
                         <button id="openid" (click)="submitForm()">OpenID connect</button>
 

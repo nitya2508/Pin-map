@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
           let index = this.userList.findIndex((x: any) => x.email === this.signInForm.value.email);
           // console.log(index, this.signInForm.value.email);
           if (this.userList[index].password == this.signInForm.value.password) {
-            this.route.navigateByUrl('/dashboard')
+            this.route.navigateByUrl('/dashboard/map')
             console.log("email and password match valid user");
             this.snackbar.open("SignIn successful !!!!", '', {
               duration: 3000,

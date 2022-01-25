@@ -63,5 +63,235 @@
       "id": "4a304389",
       "registrationType": "okta"
     }
-  ]
+  ],
+  "location": [
+    {
+      "bb30498d": [
+        {
+          "locationid": "1a514db315a9",
+          "title": "Home",
+          "latitude": 17.936928637549443,
+          "longitude": 76.95220454259596,
+          "address": "Belura Tanda, Basavakalyana taluku, Bidar district, Karnataka, India"
+        },
+        {
+          "locationid": "9bef468e66b9",
+          "title": "office changed",
+          "latitude": 23.507581714814528,
+          "longitude": 79.11683382286873,
+          "address": "Deori Tahsil, Sagar, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "88f5448ef099",
+          "title": "play",
+          "latitude": 21.166483858206583,
+          "longitude": 77.74306025191943,
+          "address": "Amravati, Maharashtra, India"
+        },
+        {
+          "locationid": "a95c43ae5699",
+          "title": "edited to delhi",
+          "latitude": 28.767659105691255,
+          "longitude": 77.30981527340695,
+          "address": "Ghaziabad, Uttar Pradesh, 201001, India"
+        },
+        {
+          "locationid": "d95b42996db9",
+          "title": "hi",
+          "latitude": 19.68397023588844,
+          "longitude": 80.46711880625587,
+          "address": "Etapalli, Gadchiroli, Maharashtra, 442704, India"
+        },
+        {
+          "locationid": "7a4b4a97a2b9",
+          "title": "new",
+          "latitude": 20.385825381874263,
+          "longitude": 80.64286451943886,
+          "address": "Manpur Tahsil, Rajnandgaon, Chhattisgarh, 491229, India"
+        },
+        {
+          "locationid": "ea9640ab9a99",
+          "title": "qwer",
+          "latitude": 18.729501999072138,
+          "longitude": 77.2597595406662,
+          "address": "Mukhed, Nanded, Maharashtra, India"
+        },
+        {
+          "locationid": "9a3448834599",
+          "title": "picnic",
+          "latitude": 17.476432197195518,
+          "longitude": 76.38103097475121,
+          "address": "Kerura, Alanda taluku, Kalaburagi district, Karnataka, India"
+        },
+        {
+          "locationid": "6af2449e6599",
+          "title": "hello",
+          "latitude": 18.47960905583198,
+          "longitude": 81.47072273826916,
+          "address": "Sukma Tahsil, Sukma, Chhattisgarh, India"
+        },
+        {
+          "locationid": "8b7945a68e89",
+          "title": "New place",
+          "latitude": 24.80668135385199,
+          "longitude": 72.99355784986908,
+          "address": "Arasana, Pindwara Tehsil, Sirohi, Rajasthan, India"
+        },
+        {
+          "locationid": "f92b4591ce89",
+          "title": "check",
+          "latitude": 22.553147478403194,
+          "longitude": 83.14179108469952,
+          "address": "Udaipur (Dharamjaigarh) Tahsil, Raigarh, Chhattisgarh, India"
+        },
+        {
+          "locationid": "fbce49bafab9",
+          "title": "new one",
+          "latitude": 23.885837699862005,
+          "longitude": 79.44613258199048,
+          "address": "Damoh, Damoh Tahsil, Damoh, Madhya Pradesh, 470600, India"
+        },
+        {
+          "locationid": "aac541993589",
+          "title": "for date",
+          "latitude": 22.755920681486405,
+          "longitude": 77.51189517844985,
+          "address": "Salkanpur, Rehti Tahsil, Sehore, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "e82045b9bf99",
+          "title": "add",
+          "latitude": 23.200960808078566,
+          "longitude": 77.59981506042897,
+          "address": "Goharganj Tahsil, Raisen, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "391540a188b9",
+          "title": "adding",
+          "latitude": 24.08658925822804,
+          "longitude": 81.11661033959373,
+          "address": "Beohari Tahsil, Shahdol, Madhya Pradesh, 484776, India"
+        },
+        {
+          "locationid": "9bf24fb75ab9",
+          "title": "wwewe",
+          "latitude": 22.79643932091949,
+          "longitude": 78.08337441131414,
+          "address": "Babai Tahsil, Hoshangabad, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "4baf41a0c499",
+          "title": "ddddd",
+          "latitude": 22.51255695405145,
+          "longitude": 77.29209547350204,
+          "address": "Seoni-Malwa Tahsil, Hoshangabad, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "69be4cb01f89",
+          "title": "esdrdrd",
+          "latitude": 25.799891182088334,
+          "longitude": 77.42397529647073,
+          "address": "Vijaypur Tahsil, Sheopur, Madhya Pradesh, 476332, India"
+        },
+        {
+          "locationid": "584b44a49389",
+          "title": "loc data",
+          "latitude": 34.30714385628804,
+          "longitude": 77.33605541449161,
+          "address": "Leh, Leh District, Ladakh, India"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "4a304389": [
+        {
+          "locationid": "2a4542a1cfa9",
+          "title": "place",
+          "latitude": 17.644022027872726,
+          "longitude": 77.30369596896195,
+          "address": "Mustarivadi, Humanabad taluku, Bidar district, Karnataka, India"
+        },
+        {
+          "locationid": "2bc54dbeae99",
+          "title": "hi",
+          "latitude": 15.241789855961722,
+          "longitude": 76.07347597668098,
+          "address": "Bisaralli, Koppala taluku, Koppal district, Karnataka, India"
+        },
+        {
+          "locationid": "0bd2499055a9",
+          "title": "zoo",
+          "latitude": 13.496472765758964,
+          "longitude": 76.86433168600448,
+          "address": "Talekoppa, Gubbi taluk, Tumkur district, Karnataka, 561210, India"
+        },
+        {
+          "locationid": "a964469fe1b9",
+          "title": "place changed",
+          "latitude": 24.726874870506972,
+          "longitude": 79.3602252934346,
+          "address": "Bada Malhera Tahsil, Chhatarpur, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "e9cd46bef7b9",
+          "title": "changed",
+          "latitude": 17.685895196738677,
+          "longitude": 75.84371763589006,
+          "address": "SH176, Degaon, Solapur North, Solapur, Maharashtra, 413255, India"
+        },
+        {
+          "locationid": "78f04fb7c889",
+          "title": "New place",
+          "latitude": 21.575718932458493,
+          "longitude": 77.47593355669477,
+          "address": "Chikhaldara, Amravati, Maharashtra, India"
+        },
+        {
+          "locationid": "a91b4aa0fe99",
+          "title": "New location",
+          "latitude": 26.352497858154024,
+          "longitude": 76.33154741069221,
+          "address": "Sundarpur, Bonli Tehsil, Sawai Madhopur, Rajasthan, India"
+        },
+        {
+          "locationid": "9b934d8d7d99",
+          "title": "12345",
+          "latitude": 25.48295117535531,
+          "longitude": 81.82505141774706,
+          "address": "Ashok Nagar, Prayagraj, Uttar Pradesh, 211001, India"
+        },
+        {
+          "locationid": "9b1242b4dca9",
+          "title": "dxdxd",
+          "latitude": 24.886436490787712,
+          "longitude": 79.71299439098267,
+          "address": "Rajnagar Tahsil, Chhatarpur, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "5b7049a4b489",
+          "title": "1234",
+          "latitude": 25.20494115356912,
+          "longitude": 78.56693376219928,
+          "address": "Talbehat, Lalitpur, Uttar Pradesh, India"
+        },
+        {
+          "locationid": "5b5741a41e99",
+          "title": "weree",
+          "latitude": 24.08658925822804,
+          "longitude": 76.45685659470043,
+          "address": "Jirapur Tahsil, Rajgarh, Madhya Pradesh, India"
+        },
+        {
+          "locationid": "59d745beba99",
+          "title": "xcvbn ",
+          "latitude": 19.932041306115536,
+          "longitude": 79.27029281803225,
+          "address": "Devala, Chandrapur, Chandrapur District, Maharashtra, 442402, India"
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "locationHistory": []
 }

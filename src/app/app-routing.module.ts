@@ -8,6 +8,7 @@ import { OktaComponent } from './Components/okta/okta.component';
 import { MapComponent } from './Components/map/map.component';
 import { TableComponent } from './Components/table/table.component';
 import { ViewEditMapComponent } from './Components/view-edit-map/view-edit-map.component';
+import { HeatmapComponent } from './Components/heatmap/heatmap.component';
 
 const routes: Routes = [
   {path:'register',component:RegistrationComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
     {path:'',redirectTo:"/dashboard/map",pathMatch:'full'},
     {path:'map',component:MapComponent},
     {path:'table',component:TableComponent},
-    {path:'editView',component:ViewEditMapComponent}
+    {path:'editView',component:ViewEditMapComponent},
+    {path:'heatmap',component:HeatmapComponent}
   ]
 },
 ];

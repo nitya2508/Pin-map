@@ -35,4 +35,10 @@ export class LocationService {
   addLocationHistory(payload:any){
    return this.http.post(' http://localhost:3000/locationHistory',payload)
   } 
+
+  updateLocationHistory(data:any){
+    console.log("data",data);
+    
+    return this.http.put('http://localhost:3000/locationHistory/'+data.id, data);
+  }
 }

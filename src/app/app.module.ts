@@ -25,6 +25,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { DialogComponent } from './Components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewEditMapComponent } from './Components/view-edit-map/view-edit-map.component';
+import { HeatmapComponent } from './Components/heatmap/heatmap.component';
 // import * as mapboxgl from 'mapbox-gl';
 
 const oktaConfig = Object.assign({
@@ -44,7 +45,8 @@ const oktaConfig = Object.assign({
     MapComponent,
     TableComponent,
     DialogComponent,
-    ViewEditMapComponent
+    ViewEditMapComponent,
+    HeatmapComponent
   ],
   imports: [
     BrowserModule,

@@ -102,9 +102,9 @@ export class DashboardComponent implements OnInit {
         id: uuid,
         registrationType: "okta"
       }
-      this.userservice.addUser(registerData).subscribe((response) => {
+      this.userservice.addUser(registerData).subscribe((response:any) => {
         console.log("user added", response)
-        // this.dataservice.sendId(this.userId)
+         this.dataservice.sendId(response.id)
       })
 
     }

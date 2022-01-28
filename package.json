@@ -26,6 +26,7 @@
     "@okta/okta-auth-js": "^5.9.1",
     "@okta/okta-signin-widget": "^5.16.0",
     "@types/mapbox-gl": "^2.6.0",
+    "heatmap.js": "^2.0.5",
     "leaflet": "^1.7.1",
     "mapbox-gl": "^2.6.1",
     "ol": "^6.10.0",

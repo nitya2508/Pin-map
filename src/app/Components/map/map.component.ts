@@ -29,6 +29,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   createData: any;
   locationHistoryList: any;
   isLocationIDfound = false;
+  locid: any
 
 
   constructor(private http: HttpClient, public dialog: MatDialog, private dataservice: DataService, private locationservice: LocationService) { }
@@ -135,17 +136,17 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  addMarker() { //to store location data in to json file under particlular muser id
+  addMarker() { //to store location data in to json file under particlular user id
     var dt = new Date().getTime();
-    var locid = 'xyxx4xyxxxy9'.replace(/[xy]/g, function (c) {
+    this.locid = 'xyxx4xyxxxy9'.replace(/[xy]/g, function (c) {
       var r = (dt + Math.random() * 16) % 16 | 0;
       dt = Math.floor(dt / 16);
       return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
-    console.log("location id", locid);
+    console.log("location id", this.locid);
 
     let addressData = {
-      locationid: locid,
+      locationid: this.locid,
       title: this.title,
       latitude: this.latlng.lat,
       longitude: this.latlng.lng,
@@ -165,7 +166,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     if (this.locationArray.length == 0) {
       this.locationservice.addLocation(this.locationData).subscribe((response) => {
         console.log(response);
-        this.locationHistory(response)
+        this.getLocationDetails()
+        this.locationHistory(this.locid)
         this.markerDisp(this.latlng)
       })
 
@@ -195,8 +197,8 @@ export class MapComponent implements OnInit, AfterViewInit {
 
           this.locationservice.updateLocation(this.locationArray[i]).subscribe((response) => {
             console.log(response);
-            this.locationHistory(response)
-            this.markerDisp(this.latlng)
+            this.locationHistory(this.locid);
+            this.markerDisp(this.latlng);
           })
         }
 
@@ -213,8 +215,9 @@ export class MapComponent implements OnInit, AfterViewInit {
 
         this.locationservice.addLocation(this.locationData).subscribe((response) => {
           console.log(response);
-          this.locationHistory(response)
-          this.markerDisp(this.latlng)
+          this.getLocationDetails()
+          this.locationHistory(this.locid);
+          this.markerDisp(this.latlng);
         })
       }
     }
@@ -244,8 +247,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     })
   }
 
-  locationHistory(locDetails) {
-    console.log("location detalis", locDetails);
+  locationHistory(locID) {
+    console.log("location detalis", locID);
 
     var now = new Date();
     var currentDate = [
@@ -264,7 +267,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     console.log("date", currentDate);
 
     let data = {
-      locationId: locDetails.locationid,
+      locationId: locID,
       trackLocationHistory: [{
         action: "created",
         time: currentDate
@@ -278,9 +281,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     console.log("history data", locHistory);
 
     if (this.locationHistoryList.length == 0) {
-      this.locationservice.addLocationHistory(locHistory).subscribe((result)=>{
-        console.log("location history added",result);
-        
+      this.locationservice.addLocationHistory(locHistory).subscribe((result) => {
+        console.log("location history added", result);
+        this.getLocationHistory()
+
       })
 
     } else {
@@ -290,12 +294,30 @@ export class MapComponent implements OnInit, AfterViewInit {
 
       for (var i = 0; i < this.locationHistoryList.length; i++) {
 
-        console.log('match: ', this.locationArray[i])
-        var keys = Object.keys(this.locationArray[i]);
+        // console.log('match: ', this.locationArray[i])
+        var keys = Object.keys(this.locationHistoryList[i]);
         console.log("keys", keys);
 
         if (keys[0] == this.userId) {
           this.isLocationIDfound = true;
+          console.log(keys[0], "matched", this.userId);
+          console.log(this.locationHistoryList[i]);
+          this.locationHistoryList[i][this.userId].push(data)
+          console.log('after: ', this.locationHistoryList[i], this.locationHistoryList[i].id)
+          console.log(" loc Data", data);
+          this.locationHistoryList[i] = {
+            [this.userId]: this.locationHistoryList[i][this.userId],
+            id: this.locationHistoryList[i].id
+          };
+          console.log("update loc data", this.locationHistoryList[i]);
+
+
+          this.locationservice.updateLocationHistory(this.locationHistoryList[i]).subscribe((response) => {
+            console.log(response);
+
+          })
+
+
         }
 
       }
@@ -308,7 +330,10 @@ export class MapComponent implements OnInit, AfterViewInit {
         return
       } else {
         console.log("location not found");
-
+        this.locationservice.addLocationHistory(locHistory).subscribe((result) => {
+          console.log("location history added", result);
+          this.getLocationHistory()
+        })
 
       }
     }

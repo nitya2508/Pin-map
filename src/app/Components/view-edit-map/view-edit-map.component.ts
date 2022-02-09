@@ -173,62 +173,38 @@ export class ViewEditMapComponent implements OnInit {
         console.log(this.locationHistoryList[i][this.locationData.userId]);
         this.locHistoryArray = this.locationHistoryList[i][this.locationData.userId]
         console.log(this.locHistoryArray);
-        
-        for (var k = 0; k < this.locHistoryArray.length; k++){
+
+        for (var k = 0; k < this.locHistoryArray.length; k++) {
           var locArrayKeys = Object.keys(this.locHistoryArray[k]);
           console.log("loc array keys", this.locHistoryArray[k].locationId);
           // if (this.locHistoryArray[k].locationId == locID)
-          if (this.locHistoryArray[k].locationId == locID){
-            console.log(this.locHistoryArray[k].locationId ,"loc id matched", locID);
+          if (this.locHistoryArray[k].locationId == locID) {
+            console.log(this.locHistoryArray[k].locationId, "loc id matched", locID);
             this.locHistoryArray[k].trackLocationHistory.push(data)
             console.log(this.locHistoryArray[k].trackLocationHistory);
             this.locationHistoryList[i] = {
               [this.locationData.userId]: this.locationHistoryList[i][this.locationData.userId],
               id: this.locationHistoryList[i].id
             };
-            console.log("sending data", this.locationHistoryList[i] );
+            console.log("sending data", this.locationHistoryList[i]);
             this.locationservice.updateLocationHistory(this.locationHistoryList[i]).subscribe((response) => {
               console.log(response);
-  
+
             })
-            
-          }else{
-            console.log(this.locHistoryArray[k].locationId ,"loc id not matched", locID);
+
+          } else {
+            console.log(this.locHistoryArray[k].locationId, "loc id not matched", locID);
           }
 
         }
-        //   this.locationHistoryList[i][this.userId].push(data)
-        //   console.log('after: ', this.locationHistoryList[i], this.locationHistoryList[i].id)
-        //   console.log(" loc Data", data);
-        //   this.locationHistoryList[i] = {
-        //     [this.userId]: this.locationHistoryList[i][this.userId],
-        //     id: this.locationHistoryList[i].id
-        //   };
-        //   console.log("update loc data", this.locationHistoryList[i]);
 
 
-        //   this.locationservice.updateLocationHistory(this.locationHistoryList[i]).subscribe((response) => {
-        //     console.log(response);
 
-        //   })
-
-
-         }
+      }
 
     }
 
-    if (this.isLocationIDfound == true) {
-      console.log("location found data added");
 
-      return
-    } else {
-      console.log("location not found");
-      // this.locationservice.addLocationHistory().subscribe((result) => {
-      //   console.log("location history added", result);
-      //   this.getLocationHistory()
-      // })
-
-    }
 
 
 

@@ -1,0 +1,13 @@
+<div fxFlex="100"  >
+       
+    <div class="toggle" fxLayout="row" fxLayoutAlign="end start" >
+        <span>Map</span>
+        <mat-slide-toggle class="togbutton" (change)="onChange($event)"></mat-slide-toggle> 
+        <span>Table</span>
+    </div>
+
+    <div class="bodyDiv">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

@@ -24,7 +24,7 @@ export class TableComponent implements OnInit {
 
     this.dataservice.receiveId.subscribe((result: any) => {
       console.log("received Id", result);
-      this.userId = result;
+      this.userId = localStorage.getItem('token');
 
     })
     this.getLocationHistory()

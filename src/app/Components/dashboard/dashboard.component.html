@@ -1,25 +1,29 @@
 <div fxFlex="100" style=" border: 2px solid gray;height: 100vh;" >
     <div >
-        <mat-toolbar color="primary">
+        <mat-toolbar >
             <div fxLayout="row" fxLayoutAlign="space-between center" class="header" >
                 
                 <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-icon-button ><mat-icon>menu</mat-icon></button>
                     <img class="image" src="../../../../assets/location_on_white_24dp.svg">
-                    <p class="title">Pin-Map</p>
+                    <p class="title">Pin-Location</p>
                 </div>
     
-    
-                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-                    <mat-icon (click)="logout()">logout</mat-icon>
-                </button>
+                <!-- <div fxLayout="row"> -->
+                    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                        <mat-icon (click)="logout()">logout</mat-icon>    
+                    </button>
+                    <!-- <p class="title">LOGOUT</p>
+                </div> -->
+                
             </div>
         </mat-toolbar>
     </div>
 
    <div fxLayout="row">
     <div  fxLayout="column" fxLayoutAlign="start start"  class="sidnav">
-        <h1 routerLink="/dashboard/map">Pinned Dashboard</h1>
-        <h1 routerLink="/dashboard/heatmap">Heat Map</h1>
+        <h1 (click)="pin_map()">Pinned Dashboard</h1>
+        <h1 (click)="heat_map()">Heat Map</h1>
     </div>
 
     <div fxFlex="90" class="maindiv" >

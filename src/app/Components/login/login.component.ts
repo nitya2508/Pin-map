@@ -6,6 +6,8 @@ import { UserService } from 'src/app/services/user.service';
 import pinMapConfig from 'src/app/config/pin-map-config';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import { OktaAuthService } from '@okta/okta-angular';
+import { localizedString } from '@angular/compiler/src/output/output_ast';
+import { DataService } from 'src/app/services/datsservice/data.service';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +20,10 @@ export class LoginComponent implements OnInit {
   userList: any;
   oktaSignin:any;
   isoktalogin=true;
+  oktaToken:any;
 
   constructor(private formBuilder: FormBuilder, private snackbar: MatSnackBar, private userservice: UserService,
-    private route: Router, private oktaAuthService: OktaAuthService) { 
+    private route: Router, private oktaAuthService: OktaAuthService, private dataservice: DataService) { 
       // this.oktaSignin = new OktaSignIn({
       //   // logo: '../../asstes/pin.png',
       //   features:{
@@ -39,6 +42,14 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
       // this.openIdConnect()
+      
+      this.oktaToken=localStorage.key(3);
+      console.log("okta token",  this.oktaToken);
+     
+      if(this.oktaToken=="okta-token-storage"){
+        console.log(localStorage.getItem(this.oktaToken));
+        this.route.navigateByUrl('/newDashboard/pinnedLocation/map')
+      }
 
       this.getAllUserList()
   
@@ -49,6 +60,8 @@ export class LoginComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
       });
+   
+    
     }
   
     getAllUserList() {
@@ -101,7 +114,10 @@ export class LoginComponent implements OnInit {
           let index = this.userList.findIndex((x: any) => x.email === this.signInForm.value.email);
           // console.log(index, this.signInForm.value.email);
           if (this.userList[index].password == this.signInForm.value.password) {
-            this.route.navigateByUrl('/dashboard/map')
+            console.log("login user details",this.userList[index]);
+            localStorage.setItem('token', this.userList[index].id)
+            this.dataservice.sendId(this.userList[index].id)
+            this.route.navigateByUrl('/newDashboard/pinnedLocation/map')
             console.log("email and password match valid user");
             this.snackbar.open("SignIn successful !!!!", '', {
               duration: 3000,

@@ -36,11 +36,13 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-
+    this.userId = localStorage.getItem('token');
+    console.log("user id======", this.userId);
+    
     this.dataservice.receiveId.subscribe((result: any) => {
       console.log("received Id", result);
-      this.userId = result;
-
+     
+      
     })
     this.getLocationDetails();
     this.getLocationHistory();

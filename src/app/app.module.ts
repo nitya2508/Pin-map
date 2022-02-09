@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { OKTA_CONFIG,OktaAuthModule} from '@okta/okta-angular';
 import { Router } from '@angular/router';
@@ -26,6 +28,8 @@ import { DialogComponent } from './Components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewEditMapComponent } from './Components/view-edit-map/view-edit-map.component';
 import { HeatmapComponent } from './Components/heatmap/heatmap.component';
+import { NewDashboardComponent } from './Components/new-dashboard/new-dashboard.component';
+import { PinnedLocComponent } from './Components/pinned-loc/pinned-loc.component';
 // import * as mapboxgl from 'mapbox-gl';
 
 const oktaConfig = Object.assign({
@@ -46,13 +50,15 @@ const oktaConfig = Object.assign({
     TableComponent,
     DialogComponent,
     ViewEditMapComponent,
-    HeatmapComponent
+    HeatmapComponent,
+    NewDashboardComponent,
+    PinnedLocComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,ReactiveFormsModule,HttpClientModule,MatSnackBarModule,MatToolbarModule,
     BrowserAnimationsModule,FlexLayoutModule,MatDividerModule,MatIconModule,OktaAuthModule,
-    MatSlideToggleModule, LeafletModule, MatDialogModule
+    MatSlideToggleModule, LeafletModule, MatDialogModule,MatSidenavModule,MatListModule
   
   ],
   providers: [

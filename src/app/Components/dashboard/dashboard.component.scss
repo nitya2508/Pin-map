@@ -5,12 +5,15 @@
 .image{
     width: 50px;
     height: 50px;
-    background-color: #3F51B5;
+    background-color: rgb(8, 158, 218);
     border-radius: 50px;
+}
+mat-toolbar{
+    background-color: rgb(141, 231, 238);
 }
 .title{
     // border: 2px solid pink;
-    // color: #999999;
+     color: white;
     margin-top: 30px;
     font-weight: bold;
     font-size: 25px;
@@ -18,7 +21,7 @@
 }
 .header{
     // border: 2px solid yellow;
-    width: 90%;
+    width: 85%;
     margin-left: 8%;
 }
 .sidnav{

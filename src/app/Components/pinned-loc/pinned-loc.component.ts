@@ -18,7 +18,7 @@ export class PinnedLocComponent implements OnInit {
     })
   }
 
-  onChange(ob: any) {
+  onChange(ob: any) {//function to switch between map and table view
     this.toggleCond = ob.checked;
     console.log(ob.checked, this.toggleCond);
 

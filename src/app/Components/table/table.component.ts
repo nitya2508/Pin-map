@@ -30,7 +30,7 @@ export class TableComponent implements OnInit {
     this.getLocationHistory()
   }
 
-  getLocationDetails() {
+  getLocationDetails() {//get list of locations choosed by logged in user
     this.locationService.getLocationList().subscribe((result: any) => {
       console.log("location Array", result);
       this.locationArray = result;
@@ -60,7 +60,7 @@ export class TableComponent implements OnInit {
 
     })
   }
-  viewLocation(data: any, index) {
+  viewLocation(data: any, index) {//common function for view and edit location
     let location = data;
     let viewlocationData = {
       userId: this.userId,
@@ -75,7 +75,7 @@ export class TableComponent implements OnInit {
     this.dataservice.sendLocationData(viewlocationData)
   }
 
-  deleteLocation(deleteData, deleteIndex) {
+  deleteLocation(deleteData, deleteIndex) {//function to delete a location from db
     console.log("to be deleted", deleteData, deleteIndex);
     console.log("before", this.locationArray);
 
@@ -117,14 +117,14 @@ export class TableComponent implements OnInit {
 
   }
 
-  getLocationHistory() {
+  getLocationHistory() {//fetching location history of the pinned locations
     this.locationService.getLocationHistoryList().subscribe((response) => {
       console.log("location history", response);
       this.locationHistoryList = response;
     })
   }
 
-  locationHistory(locID) {
+  locationHistory(locID) {//adding location history on to db
     console.log("location detalis", locID);
 
     var now = new Date();

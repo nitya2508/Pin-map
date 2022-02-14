@@ -61,14 +61,14 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
   }
 
 
-  getAllUserList() {
+  getAllUserList() {//fetching registered users list from db
     this.userservice.getAllUsers().subscribe((result) => {
       console.log(result)
       this.userList = result;
     })
   }
 
-  async signindetails() {
+  async signindetails() {//get sign in user details through okta sign-in
     const userClaims = await this.oktaAuthService.getUser();
     console.log('user-claims', userClaims)
     console.log('Last name', userClaims.family_name,);
@@ -154,7 +154,7 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
    
   }
 
-  heatmapChoosed(data:any){
+  heatmapChoosed(data:any){//sharing data on choosing heat map from the list
     console.log("choosed heat map is ====", data.name);
     this.dataservice.sendHeatmapData(data);
   }

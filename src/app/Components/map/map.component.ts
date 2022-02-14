@@ -246,14 +246,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     marker.addTo(this.map);
   }
 
-  getLocationHistory() {
+  getLocationHistory() {//fetching location history of the pinned locations
     this.locationservice.getLocationHistoryList().subscribe((response) => {
       console.log("location history", response);
       this.locationHistoryList = response;
     })
   }
 
-  locationHistory(locID) {
+  locationHistory(locID) {//adding location history on to db
     console.log("location detalis", locID);
 
     var now = new Date();

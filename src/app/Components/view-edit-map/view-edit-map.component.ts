@@ -89,7 +89,7 @@ export class ViewEditMapComponent implements OnInit {
     });
   }
 
-  addDatatoDB() {
+  addDatatoDB() {//to store edited location data in to json file under particlular user id
     console.log("add data to db");
     this.userLocArray = this.locationData.arrayList
     console.log("userLocArray", this.userLocArray);
@@ -116,7 +116,7 @@ export class ViewEditMapComponent implements OnInit {
 
   }
 
-  markerDisp(data) {
+  markerDisp(data) {//display a pin or marker on the map
     console.log("marker loc data ===", data);
     var myIcon = L.icon({
       iconUrl: 'assets/pin.png',
@@ -133,14 +133,14 @@ export class ViewEditMapComponent implements OnInit {
     marker.addTo(this.map);
   }
 
-  getLocationHistory() {
+  getLocationHistory() {//fetching location history of the pinned locations
     this.locationservice.getLocationHistoryList().subscribe((response) => {
       console.log("location history", response);
       this.locationHistoryList = response;
     })
   }
 
-  locationHistory(locID) {
+  locationHistory(locID) {//adding location history on to db
     console.log("location detalis", locID);
 
     var now = new Date();

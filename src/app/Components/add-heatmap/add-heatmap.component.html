@@ -1,0 +1,11 @@
+<div class="box" fxLayout="column" fxLayoutAlign="space-around center">
+    <div class="header" fxLayoutAlign="center center">
+        <h1>Add New Heatmap</h1>
+    </div>
+    <hr style="display: inline;width: 100%;">
+    <div fxLayout="row" class="name" fxLayoutAlign="space-around center">
+        <label>Name</label>
+        <input type="text" placeholder="Enter heatmap " [(ngModel)]="heatmapName">
+    </div>
+    <button (click)="saveData()">Save</button>
+</div>

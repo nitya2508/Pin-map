@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 import { DataService } from 'src/app/services/datsservice/data.service';
 import { UserService } from 'src/app/services/user.service';
 import * as _ from 'underscore';
+import { HeatmapComponent } from '../heatmap/heatmap.component';
+import { HeatmapService } from 'src/app/services/heatmapService/heatmap.service';
 
 @Component({
   selector: 'app-new-dashboard',
@@ -19,6 +21,7 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
   index: any;
   userId: any;
   isRegistered = false;
+  heatmapList:any;
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -34,7 +37,9 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private oktaAuthService: OktaAuthService, private route: Router, private userservice: UserService, private dataservice: DataService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private oktaAuthService: OktaAuthService, private route: Router,
+     private userservice: UserService, private dataservice: DataService, private router:ActivatedRoute,
+     private heatmapService:HeatmapService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -44,7 +49,17 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
     this.getAllUserList();
     this.signindetails();
   
+    this.router.paramMap.subscribe(res=>{
+      console.log("activated route",res);
+      
+    });
+    this.dataservice.receiveHeatData.subscribe((result: any) => {
+      console.log("received heat data", result);
+      this.heatmapList=result;
+    })
+  
   }
+
 
   getAllUserList() {
     this.userservice.getAllUsers().subscribe((result) => {
@@ -101,7 +116,10 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
        
         localStorage.setItem('token',this.userId)
         console.log("token set" ,localStorage.getItem('token'));
-         this.dataservice.sendId(this.userId)
+        //  this.dataservice.sendId(this.userId)
+
+       
+        
         // })
       }
 
@@ -133,6 +151,12 @@ export class NewDashboardComponent implements OnDestroy, OnInit{
       })
 
     }
+   
+  }
+
+  heatmapChoosed(data:any){
+    console.log("choosed heat map is ====", data.name);
+    this.dataservice.sendHeatmapData(data);
   }
 
   logout() {

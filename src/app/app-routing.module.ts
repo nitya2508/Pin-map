@@ -12,6 +12,7 @@ import { HeatmapComponent } from './Components/heatmap/heatmap.component';
 import { AuthGuard } from './Authguard/auth.guard';
 import { NewDashboardComponent } from './Components/new-dashboard/new-dashboard.component';
 import { PinnedLocComponent } from './Components/pinned-loc/pinned-loc.component';
+import { AddLocationsComponent } from './Components/add-locations/add-locations.component';
 
 const routes: Routes = [
   {path:'register',component:RegistrationComponent},
@@ -20,15 +21,18 @@ const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'okta',component:OktaComponent},
   // {path:'map',component:MapComponent},
+  {path:'heatLocations',component:AddLocationsComponent},
   {path:'newDashboard',component:NewDashboardComponent,
   children:[
     {path:'pinnedLocation',component:PinnedLocComponent,
       children:[
         {path:'map',component:MapComponent},
-      {path:'table',component:TableComponent}
+      {path:'table',component:TableComponent},
+      {path:'editView',component:ViewEditMapComponent},
       ]
     },
-    {path:'heatmap',component:HeatmapComponent}
+    {path:'heatmap',component:HeatmapComponent},
+    
   ]
 },
   {path:'dashboard',component:DashboardComponent,

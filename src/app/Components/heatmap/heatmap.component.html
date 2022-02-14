@@ -1,8 +1,11 @@
-<!-- <p>heatmap works</p> -->
-<!-- <div 
-  style="height: 100vh;" 
-  leaflet [leafletOptions]="options" 
-  (leafletMapReady)="onMapReady($event)">
-</div> -->
-<div id="map"></div>
+<div class="screen">
 
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="title">{{heatmap_name}} Heat Map</div>
+    <div class="buttons" fxLayout="row" fxLayoutAlign="space-between start">
+      <button class="inpButton" (click)="addLocations()">Add More Location</button>
+      <button class="inpButton" (click)="openDialog()">Add Heatmap</button>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>

@@ -1,8 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 // import 'heatmap.js';
 import "leaflet.heat";
+import { DataService } from 'src/app/services/datsservice/data.service';
+import { HeatmapService } from 'src/app/services/heatmapService/heatmap.service';
 import { addressPoints } from '../../../assets/realworld.10000';
+import { AddHeatmapComponent } from '../add-heatmap/add-heatmap.component';
 
 declare const HeatmapOverlay: any;
 
@@ -12,38 +18,53 @@ declare const HeatmapOverlay: any;
   styleUrls: ['./heatmap.component.scss']
 })
 export class HeatmapComponent implements OnInit {
-   private map: any;
-   HeatmapOverlay: any
+  private map: any;
+  HeatmapOverlay: any
+  newAddpoint: any = [];
+  coordinates: any;
+  heatmapName: any;
+  userId: any;
+  heatid: any;
+  heatData: any;
+  heatmapList: any;
+  locData: any;
+  isUserIDfound = false;
+  heatmap_user: any;
+  heatmap_name: any;
+  heatmap_lat: any;
+  heatmap_lon: any;
+
+  constructor(public dialog: MatDialog, private http: HttpClient, private heatmapService: HeatmapService,
+    private dataservice: DataService, private route:Router) { };
   ngOnInit(): void {
- 
+    this.userId = localStorage.getItem('token');
+    console.log(this.userId);
+    this.getHeatmaplist();
+
+    this.dataservice.receiveHeatmapData.subscribe((result: any) => {
+      console.log("received heat data", result);
+      this.heatmap_user=result;
+      if (this.map != undefined) {
+         this.map.remove();
+         this.heatmapChoosed( this.heatmap_user);
+         }
+     
+      // this.heatmapChoosed( this.heatmap_user);
+    })
   }
 
-  ngAfterViewInit(): void {
-    this.initMap();
-    
-  }
+  // ngAfterViewInit(): void {
+  //   this.initMap();
 
-   quakePoints = [
-    [-41.5396,174.1242,1.7345],
-    [-38.8725,175.9561,2.6901],
-    [-41.8992,174.3117,4.6968],
-    [-41.7495,174.02,1.8642],
-    [-41.7008,174.0876,2.1629],
-    [-41.7371,174.0682,2.0408],
-    [-41.372,173.3502,2.7565],
-    [-41.7511,174.0623,2.4531],
-    [-41.7557,174.3391,2.1871],
-    [-41.6881,174.2726,3.1336],
-    [-41.7463,174.1194,2.7113],
-    [-41.6966,174.1238,2.4168]
-  ]
+  // }
 
   private initMap(): void {
     // Initialising map with center point by using the coordinates
     // Setting initial zoom to 3
     this.map = L.map('map', {
-      center: [ 23.2599, 77.4126],
-      zoom: 11
+      // center: [23.2237, 77.4126],
+      center:[this.heatmap_lat, this.heatmap_lon],
+      zoom: 8
     });
 
     // Initialising tiles to the map by using openstreetmap
@@ -55,52 +76,173 @@ export class HeatmapComponent implements OnInit {
     });
 
     // Adding tiles to the map
-     tiles.addTo(this.map);
-
-  
-    let heat = L.heatLayer(
-      [
-        [23.2237, 77.4126,1.7345],
-        [23.2675, 77.4236,2.6901],
-        [23.1232, 77.4265,4.6968],
-        [23.7658, 77.3126,1.8642],
-        [23.3546, 77.1236,2.1629],
-        [23.9754, 77.7896,2.0408],
-        [23.3537, 77.0926,2.7565],
-        [-41.7511,174.0623,2.4531],
-        [-41.7557,174.3391,2.1871],
-        [-41.6881,174.2726,3.1336],
-        [-41.7463,174.1194,2.7113],
-        [-41.6966,174.1238,2.4168]
-      ] // lat, lng, intensity
-    , { radius: 35,
-      minOpacity: 1, 
-      gradient: {0.3: 'blue', 0.8: 'lime', 1: 'red'}}).addTo(this.map);
+    tiles.addTo(this.map);
+    this.addHeatMap();
   }
-  
 
-  //   onMapReady(map) {
-  //     let newAddressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-  //     var cfg = {
-  //       "minOpacity": .3, 
-  //       "scaleRadius": true,
-  //       "useLocalExtrema": true,
-  //     };
+  //function to highlight points on the heat map
+  addHeatMap() {
+    this.newAddpoint = addressPoints;
+    let heat = L.heatLayer(this.newAddpoint
+      // lat, lng, intensity
+      , {
+        radius: 35,
+        minOpacity: 1,
+        gradient: { 0.3: 'blue', 0.8: 'lime', 1: 'red' }
+      }).addTo(this.map);
+  }
+
+  //function to get the list of all the heat maps of all users
+  getHeatmaplist() {
+    this.heatmapService.getHeatmap().subscribe((response) => {
+      console.log("heatmap list", response);
+      this.heatmapList = response;
+      this.heatList();
+    })
+  }
+
+  //function to fetch the heat map of the user logged in
+  heatList() {
+    var keys = Object.keys(this.heatmapList);
+    //  console.log("keys========",keys);
+
+    for (var i = 0; i < this.heatmapList.length; i++) {
+
+      //  console.log('match:=========== ',this.heatmapList[i])
+      var keys = Object.keys(this.heatmapList[i]);
+      console.log("keys", keys, 'of', this.heatmapList[i], this.userId);
+
+      if (keys[0] == this.userId) {
+        console.log("key found===========", keys[0], keys[1]);
+        console.log('before:=========== ', this.heatmapList[i][this.userId], this.userId);
+        this.heatmap_user = this.heatmapList[i][this.userId][0];
+        this.dataservice.sendHeatData(this.heatmapList[i][this.userId]);
+       this.heatmapChoosed(this.heatmap_user);
+      }
+
+    }
+  }
+
+  //function to display particular heat map
+  heatmapChoosed(heatmap){
+    this.heatmap_name= heatmap.name;
+    this.heatmap_lat=heatmap.latitude;
+    this.heatmap_lon=heatmap.longitude;
+    console.log(heatmap.name, heatmap.latitude, heatmap.longitude);
+    // this.map.setView(new L.LatLng(this.heatmap_lat,this.heatmap_lon), 9 );
+     this.initMap();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddHeatmapComponent, {
+      width: '400px',
+      height: '250px',
+      data: ""
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      this.heatmapName = result;
+      if (result == null || result == 'undefined') {
+        return;
+      } else {
+        this.http.get("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + result).subscribe((req: any) => {
+          console.log("address", req[0].lat, req[0].lon);
+          this.coordinates = req[0];
+          this.addHeatmapData();
+        })
+      }
 
 
-  //     const heat = L.heatLayer(newAddressPoints).addTo(map);
-  // }
+    });
+  }
 
-  // onMapReady(map) {
-  //   let newAddressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-  //   let heat = L.heatLayer([50.5, 30.5, 0.2], {
-  //     radius : 25, // default value
-  //     blur : 15, // default value
-  //     gradient : {1: 'red'} // Values can be set for a scale of 0-1
-  // }).addTo(this.map);
+  //function to add heatmap on to the json file 
+  addHeatmapData() {
+    var dt = new Date().getTime();
+    this.heatid = 'xyxyxy'.replace(/[xy]/g, function (c) {
+      var r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    let heatData = {
+      heatmapId: this.heatid,
+      name: this.heatmapName,
+      latitude: this.coordinates.lat,
+      longitude: this.coordinates.lon
+    }
+    console.log("heat data", heatData);
+    this.locData = [heatData];
+    this.heatData = {
+      [this.userId]: this.locData
+    };
 
-   
-    
+    if (this.heatmapList.length == 0) {
+      this.heatmapService.addHeatmap(this.heatData).subscribe((result) => {
+        console.log("data added", result);
+        this.getHeatmaplist();
+      })
+
+    } else {
+
+      var keys = Object.keys(this.heatmapList);
+      //  console.log("keys",keys);
+
+      for (var i = 0; i < this.heatmapList.length; i++) {
+
+        // console.log('match: ',this.locationArray[i])
+        var keys = Object.keys(this.heatmapList[i]);
+        // console.log("keys",keys);
+
+        if (keys[0] == this.userId) {
+          console.log("key found", keys[0], keys[1]);
+          console.log('before: ', this.heatmapList[i][this.userId], this.userId)
+          this.heatmapList[i][this.userId].push(heatData)
+          console.log('after: ', this.heatmapList[i], this.heatmapList[i].id)
+          console.log("addressData", heatData);
+          this.heatmapList[i] = {
+            [this.userId]: this.heatmapList[i][this.userId],
+            id: this.heatmapList[i].id
+          };
+          console.log("update data", this.heatmapList[i]);
+          this.isUserIDfound = true;
+
+          this.heatmapService.updateHeatmap(this.heatmapList[i]).subscribe((response) => {
+            console.log(response);
+
+          })
+        }
+
+      }
+      console.log("condition", this.isUserIDfound);
+
+
+      if (this.isUserIDfound == true) {
+        console.log("user found data added");
+
+        return
+      } else {
+        console.log("user not found");
+
+        this.heatmapService.addHeatmap(this.heatData).subscribe((response) => {
+          console.log(response);
+          this.getHeatmaplist();
+
+        })
+      }
+
+    }
+
+
+  }
+
+  addLocations(){
+    console.log("add locations");
+    this.dataservice.sendHeatmapData(this.heatmap_user);
+    this.route.navigateByUrl("/heatLocations")
+
+  }
+
 
 
 

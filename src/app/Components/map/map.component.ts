@@ -41,14 +41,18 @@ export class MapComponent implements OnInit, AfterViewInit {
     
     this.dataservice.receiveId.subscribe((result: any) => {
       console.log("received Id", result);
-     
-      
     })
     this.getLocationDetails();
     this.getLocationHistory();
+
+    if (this.map != undefined) {
+      this.map.remove();
+      // this.heatmapChoosed( this.heatmap_user);
+      }
   }
 
   ngAfterViewInit(): void {
+    
     this.initMap();
     this.getLocation();
 

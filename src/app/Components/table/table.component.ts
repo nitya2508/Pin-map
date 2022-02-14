@@ -71,7 +71,7 @@ export class TableComponent implements OnInit {
     }
     console.log("data", location, index);
 
-    this.route.navigateByUrl('/dashboard/editView')
+    this.route.navigateByUrl('/newDashboard/pinnedLocation/editView')
     this.dataservice.sendLocationData(viewlocationData)
   }
 

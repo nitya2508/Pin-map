@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
 import { OKTA_CONFIG,OktaAuthModule} from '@okta/okta-angular';
 import { Router } from '@angular/router';
 import pinMapConfig from './config/pin-map-config';
@@ -30,6 +31,8 @@ import { ViewEditMapComponent } from './Components/view-edit-map/view-edit-map.c
 import { HeatmapComponent } from './Components/heatmap/heatmap.component';
 import { NewDashboardComponent } from './Components/new-dashboard/new-dashboard.component';
 import { PinnedLocComponent } from './Components/pinned-loc/pinned-loc.component';
+import { AddHeatmapComponent } from './Components/add-heatmap/add-heatmap.component';
+import { AddLocationsComponent } from './Components/add-locations/add-locations.component';
 // import * as mapboxgl from 'mapbox-gl';
 
 const oktaConfig = Object.assign({
@@ -52,13 +55,16 @@ const oktaConfig = Object.assign({
     ViewEditMapComponent,
     HeatmapComponent,
     NewDashboardComponent,
-    PinnedLocComponent
+    PinnedLocComponent,
+    AddHeatmapComponent,
+    AddLocationsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,ReactiveFormsModule,HttpClientModule,MatSnackBarModule,MatToolbarModule,
     BrowserAnimationsModule,FlexLayoutModule,MatDividerModule,MatIconModule,OktaAuthModule,
-    MatSlideToggleModule, LeafletModule, MatDialogModule,MatSidenavModule,MatListModule
+    MatSlideToggleModule, LeafletModule, MatDialogModule,MatSidenavModule,MatListModule,
+    MatMenuModule
   
   ],
   providers: [

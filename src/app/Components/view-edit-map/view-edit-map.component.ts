@@ -22,6 +22,10 @@ export class ViewEditMapComponent implements OnInit {
   locationHistoryList: any;
   isLocationIDfound: any;
   locHistoryArray: any;
+  oldTitle: any;
+  oldLat: any;
+  oldLng: any;
+  oldAddress: any;
 
   constructor(private dataService: DataService, private http: HttpClient, public dialog: MatDialog,
     private locationservice: LocationService, private route: Router) { }
@@ -89,6 +93,10 @@ export class ViewEditMapComponent implements OnInit {
     console.log("add data to db");
     this.userLocArray = this.locationData.arrayList
     console.log("userLocArray", this.userLocArray);
+    this.oldTitle = this.userLocArray[this.locationData.index].title;
+    this.oldLat = this.userLocArray[this.locationData.index].latitude;
+    this.oldLng = this.userLocArray[this.locationData.index].longitude;
+    this.oldAddress = this.userLocArray[this.locationData.index].address;
     console.log(this.userLocArray[this.locationData.index].title = this.title);
     console.log(this.userLocArray[this.locationData.index].latitude = this.latlng.lat);
     console.log(this.userLocArray[this.locationData.index].longitude = this.latlng.lng);
@@ -103,7 +111,7 @@ export class ViewEditMapComponent implements OnInit {
     this.locationservice.updateLocation(data).subscribe((response) => {
       console.log(response);
       this.locationHistory(this.userLocArray[this.locationData.index].locationid)
-      this.route.navigateByUrl('/dashboard/table')
+      this.route.navigateByUrl('/newDashboard/pinnedLocation/table')
     })
 
   }
@@ -154,10 +162,15 @@ export class ViewEditMapComponent implements OnInit {
     let data = {
 
       action: "edited",
-      time: currentDate
+      time: currentDate,
+      editedTitle:this.oldTitle,
+      editedLat:this.oldLat,
+      editedLng:this.oldLng,
+      editedAddress:this.oldAddress
 
     }
-
+    console.log("Data===========",data);
+    
     var keys = Object.keys(this.locationHistoryList);
     console.log("keys", keys);
 
@@ -180,6 +193,8 @@ export class ViewEditMapComponent implements OnInit {
           // if (this.locHistoryArray[k].locationId == locID)
           if (this.locHistoryArray[k].locationId == locID) {
             console.log(this.locHistoryArray[k].locationId, "loc id matched", locID);
+            console.log(this.locHistoryArray[k]);
+
             this.locHistoryArray[k].trackLocationHistory.push(data)
             console.log(this.locHistoryArray[k].trackLocationHistory);
             this.locationHistoryList[i] = {

@@ -22,4 +22,19 @@ export class DataService {
     this.locationData.next(message)
   }
 
+  private heatData = new BehaviorSubject([]);
+  receiveHeatData = this.heatData.asObservable();
+
+  sendHeatData(message: []) {
+    this.heatData.next(message)
+  }
+
+  private heatmapData = new BehaviorSubject({});
+  receiveHeatmapData = this.heatmapData.asObservable();
+
+  sendHeatmapData(message: {}) {
+    this.heatmapData.next(message)
+  }
+
+
 }

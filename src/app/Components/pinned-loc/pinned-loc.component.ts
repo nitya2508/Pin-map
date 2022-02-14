@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pinned-loc',
@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
 export class PinnedLocComponent implements OnInit {
   toggleCond = false;
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private router:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.paramMap.subscribe(res=>{
+      console.log("activated route",res);
+      
+    })
   }
 
   onChange(ob: any) {

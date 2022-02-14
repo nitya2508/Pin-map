@@ -1,19 +1,36 @@
-// div {
-//     width: 100vw;
-//     height: 100vh;
-//   }
-
-
-// #map { 
-//     border: 1px solid rgb(196, 192, 192);
-//     height: 852px;
-//     width: 100%;
-//  }
+.screen{
+   // border: 5px solid blue;
+   width: 85%;
+   height: 98%;
+}
 
  #map { 
     border: 1px solid rgb(196, 192, 192);
-    height: 880px;
-    width: 83%;
+    height: 810px;
+    width: 95%;
     margin-left: 30px;
     margin-top: 20px;
+ }
+
+ .header{
+    margin-top: 10px;
+    width: 90%;
+    margin-left: 50px;
+ }
+ .inpButton{
+    font-size: 20px;
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: rgb(25, 63, 187);
+    cursor: pointer;
+ }
+ .title{
+    margin-top: 10px;
+    font-size: 25px;
+ }
+ .buttons{
+   //  border: 2px solid rgb(0, 255, 42);
+   width: 30%;
+   margin-right: 8%;
  }

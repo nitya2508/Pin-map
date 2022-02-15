@@ -21,4 +21,19 @@ export class HeatmapService {
     
     return this.http.put('http://localhost:3000/heatmap/'+data.id, data);
   }
+
+  addHeatmapLocation(payload:any){
+    return this.http.post(' http://localhost:3000/heatmapLocations',payload)
+   } 
+
+   getHeatmapLocation(){
+    return this.http.get(' http://localhost:3000/heatmapLocations')
+   } 
+
+   updateHeatmapLocation(data:any){
+    console.log("data",data);
+    
+    return this.http.put('http://localhost:3000/heatmapLocations/'+data.id, data);
+  }
+
 }

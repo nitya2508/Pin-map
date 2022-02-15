@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'okta',component:OktaComponent},
   // {path:'map',component:MapComponent},
-  {path:'heatLocations',component:AddLocationsComponent},
+  
   {path:'newDashboard',component:NewDashboardComponent,
   children:[
     {path:'pinnedLocation',component:PinnedLocComponent,
@@ -32,7 +32,7 @@ const routes: Routes = [
       ]
     },
     {path:'heatmap',component:HeatmapComponent},
-    
+    {path:'heatLocations',component:AddLocationsComponent},
   ]
 },
   {path:'dashboard',component:DashboardComponent,

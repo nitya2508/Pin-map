@@ -44,10 +44,15 @@ export class MapComponent implements OnInit, AfterViewInit {
     })
     this.getLocationDetails();
     this.getLocationHistory();
+    console.log("this map=====", this.map);
+    
 
     if (this.map != undefined) {
       this.map.remove();
       // this.heatmapChoosed( this.heatmap_user);
+      }else{
+        this.ngAfterViewInit();
+    // this.getLocation();
       }
   }
 
@@ -55,17 +60,20 @@ export class MapComponent implements OnInit, AfterViewInit {
     
     this.initMap();
     this.getLocation();
-
+    this.getLocationDetails();
 
   }
 
   centroid: L.LatLngExpression = [23.2599, 77.4126];
 
   initMap(): void {
-    this.map = L.map('map', {
-      center: this.centroid,
-      zoom: 5
-    });
+    this.map = new L.Map('map');
+    this.map.setView(this.centroid,5);
+    // this.map =L.map('map', {
+    //   this.map.setView(this.centroid,15),
+    //   // center: this.centroid,
+    //   // zoom: 5
+    // });
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       minZoom: 3,

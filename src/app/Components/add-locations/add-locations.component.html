@@ -1,2 +1,9 @@
-<p>add-locations works!</p>
-<div id="map" ></div> 
+<div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+    <p>Add more locations to {{locname}} heatmap</p>
+    <div class="buttons" fxLayout="row" fxLayoutAlign="space-between start">
+        <button (click)="backToHeatmap()">Back</button>
+        <button (click)="backToHeatmap()">Update</button>
+    </div>
+   
+</div>
+<div id="map"></div>

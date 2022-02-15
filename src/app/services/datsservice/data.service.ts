@@ -36,5 +36,12 @@ export class DataService {
     this.heatmapData.next(message)
   }
 
+  private heatmapLocData = new BehaviorSubject({});
+  receiveLocData = this.heatmapLocData.asObservable();
+
+  sendLocData(message: {}) {
+    this.heatmapLocData.next(message)
+  }
+
 
 }

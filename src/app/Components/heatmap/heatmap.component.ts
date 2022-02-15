@@ -44,6 +44,7 @@ export class HeatmapComponent implements OnInit {
     this.dataservice.receiveHeatmapData.subscribe((result: any) => {
       console.log("received heat data", result);
       this.heatmap_user=result;
+      console.log("this map=====", this.map);
       if (this.map != undefined) {
          this.map.remove();
          this.heatmapChoosed( this.heatmap_user);
@@ -236,10 +237,10 @@ export class HeatmapComponent implements OnInit {
 
   }
 
-  addLocations(){
-    console.log("add locations");
-    this.dataservice.sendHeatmapData(this.heatmap_user);
-    this.route.navigateByUrl("/heatLocations")
+  add_Locations(){
+    console.log("add locations",this.heatmap_user);
+     this.dataservice.sendLocData(this.heatmap_user);
+    this.route.navigateByUrl("/newDashboard/heatLocations")
 
   }
 

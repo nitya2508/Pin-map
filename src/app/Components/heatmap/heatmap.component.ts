@@ -7,7 +7,7 @@ import * as L from 'leaflet';
 import "leaflet.heat";
 import { DataService } from 'src/app/services/datsservice/data.service';
 import { HeatmapService } from 'src/app/services/heatmapService/heatmap.service';
-import { addressPoints } from '../../../assets/realworld.10000';
+// import { addressPoints } from '../../../assets/realworld.10000';
 import { AddHeatmapComponent } from '../add-heatmap/add-heatmap.component';
 
 declare const HeatmapOverlay: any;
@@ -33,6 +33,8 @@ export class HeatmapComponent implements OnInit {
   heatmap_name: any;
   heatmap_lat: any;
   heatmap_lon: any;
+  heatlocationsArray:any;
+  addressPoints:any;
 
   constructor(public dialog: MatDialog, private http: HttpClient, private heatmapService: HeatmapService,
     private dataservice: DataService, private route:Router) { };
@@ -48,6 +50,8 @@ export class HeatmapComponent implements OnInit {
       if (this.map != undefined) {
          this.map.remove();
          this.heatmapChoosed( this.heatmap_user);
+         }else if(this.map == undefined){
+          this.heatmapChoosed( this.heatmap_user);
          }
      
       // this.heatmapChoosed( this.heatmap_user);
@@ -65,7 +69,7 @@ export class HeatmapComponent implements OnInit {
     this.map = L.map('map', {
       // center: [23.2237, 77.4126],
       center:[this.heatmap_lat, this.heatmap_lon],
-      zoom: 8
+      zoom: 7
     });
 
     // Initialising tiles to the map by using openstreetmap
@@ -83,7 +87,7 @@ export class HeatmapComponent implements OnInit {
 
   //function to highlight points on the heat map
   addHeatMap() {
-    this.newAddpoint = addressPoints;
+    this.newAddpoint = this.addressPoints;
     let heat = L.heatLayer(this.newAddpoint
       // lat, lng, intensity
       , {
@@ -129,9 +133,35 @@ export class HeatmapComponent implements OnInit {
     this.heatmap_name= heatmap.name;
     this.heatmap_lat=heatmap.latitude;
     this.heatmap_lon=heatmap.longitude;
-    console.log(heatmap.name, heatmap.latitude, heatmap.longitude);
+    console.log("heat map choosed =====",heatmap);
     // this.map.setView(new L.LatLng(this.heatmap_lat,this.heatmap_lon), 9 );
-     this.initMap();
+    this.heatmapService.getHeatmapLocation().subscribe((response)=>{
+      console.log("heatmap locations", response);
+      this.heatlocationsArray=response;
+      for (var a = 0; a < this.heatlocationsArray.length; a++){
+        var keys = Object.keys(this.heatlocationsArray[a]);
+        console.log("keys", keys, 'of',this.heatlocationsArray[a], this.userId);
+        if (keys[0] == this.userId) {
+          console.log("key found===========", keys[0], keys[1]);
+          console.log('before:=========== ', this.heatlocationsArray[a][this.userId], this.userId);
+          let heatArray=this.heatlocationsArray[a][this.userId];
+
+          for (var b = 0; b < heatArray.length; b++){
+            var keys = Object.keys(heatArray[b]);
+            console.log("location keys", keys, 'of',heatArray[b], this.userId);
+            if (keys == heatmap.heatmapId){
+              console.log('loc array:=========== ', heatArray[b][heatmap.heatmapId],  heatmap.heatmapId);
+              this.addressPoints=heatArray[b][heatmap.heatmapId]
+              console.log("add points", this.addressPoints);
+              
+            }
+          }
+          this.initMap();
+        }
+      }
+    })
+    
+    //  this.initMap();
   }
 
   openDialog(): void {

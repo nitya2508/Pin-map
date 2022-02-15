@@ -125,11 +125,9 @@ export class AddLocationsComponent implements OnInit {
   addHeatLoc(loc) {//adding location history on to db
     console.log("location detalis", loc);
 
-    let heatmapData = {
-      latitude: this.latlng.lat,
-      longitude: this.latlng.lng,
-      intensity: "18"
-    }
+    let heatmapData = [ this.latlng.lat,this.latlng.lng,18]
+    
+    
 
     let data = {
       [this.data.heatmapId]: [heatmapData]
